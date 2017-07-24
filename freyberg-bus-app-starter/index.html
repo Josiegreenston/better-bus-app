@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <!--CUSTOM CSS-->
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY8eCw2Y-jGCT6MwxmnKQ8E-OMRPuqhK4
+&callback=initmap" async defer></script>
+
+</head>
+
+<body>
+
+    <!--Header-->
+    <header>
+        <h1 id="title">Bus Timetable App</h1>
+    </header>
+
+    <div class="container">
+        <!--Menu Sidebar-->
+        <aside>
+            <section class="bus">
+                <h2 id="awapuni">Awapuni - Rugby</h2>
+                <h3 class="stopsMenu" id="awapuniStops"></h3>
+            </section>
+
+            <section class="bus">
+                <h2 id="highbury">Highbury - Takaro</h2>
+                <h3 class="stopsMenu" id="highburyStops"></h3>
+            </section>
+
+            <section class="bus">
+                <h2 id="cloverlea">Cloverlea - Milson</h2>
+                <h3 class="stopsMenu" id="cloverleaStops"></h3>
+            </section>
+
+            <section class="bus">
+                <h2 id="rhodes">Rhodes - Roslyn</h2>
+                <h3 class="stopsMenu" id="rhodesStops"></h3>
+            </section>
+
+            <section class="bus">
+                <h2 id="rangiora">Rangiora - Brightwater</h2>
+                <h3 class="stopsMenu" id="rangioraStops"></h3>
+            </section>
+
+            <section class="bus">
+                <h2 id="fernlea">Fernlea - Heights</h2>
+                <h3 class="stopsMenu" id="fernleaStops"></h3>
+            </section>
+
+        </aside>
+        <!--END Menu Sidebar-->
+
+
+        <!--Main Content-->
+        <main>
+
+            <!--Map Area-->
+            <div id="map">
+                *Map goes here*
+            </div>
+            <!--END Map Area-->
+
+            <!--Content Area-->
+            <div id="content">
+                <div class="contentDiv">
+                    <h3>Route</h3>
+                    <h2 id="route">*Route*</h2>
+                </div>
+                <div class="contentDiv">
+                    <h3>Bus Stop</h3>
+                    <h2 id="stop">*Bus Stop*</h2>
+                </div>
+                <div class="contentDiv">
+                    <h3>Next Available</h3>
+                    <h2 id="next">*Next Available*</h2>
+                </div>
+                <div class="contentDiv">
+                    <h3>Countdown</h3>
+                    <h2 id="countdown">*Countdown*</h2>
+                </div>
+                <div class="contentDiv">
+                    <h3>Other Times</h3>
+                    <h2 id="times">*Other Times*</h2>
+                </div>
+            </div>
+            <!--END Content Area-->
+
+        </main>
+        <!--END Main Content-->
+
+    </div>
+    <!--END .container-->
+
+    <!--Footer-->
+    <footer>
+    </footer>
+
+
+    <script src="bus-stops-and-times-final-NEW.js"></script>
+    <script src="bus-coordinates-NEW.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
