@@ -41,6 +41,7 @@ class Bus {
         this.routeNameDOM = document.getElementById("route")
         this.stopDOM = document.getElementById ("stop")
         this.timesDOM = document.getElementById ("times")
+        this.nextDOM = document.getElementById ("next")
     }
 
 
@@ -59,7 +60,9 @@ class Bus {
         this.routeNameDOM.innerHTML = this.name;
         this.stopDOM.innerHTML = this.busStops[index];
         this.createMarker(index);
-        this.timesDOM.innerHTML = this.getStopTimes()
+        this.timesDOM.innerHTML = this.getStopTimes(index)
+        this.nextDOM.innerHTML = this.nextAvaliableBus(index)
+
     }
         createMarker(index){
             if (this.marker !=null) {
@@ -94,6 +97,22 @@ class Bus {
         var nextBus = new Date (2017)
 
     }
+
+    nextAvaliableBus (index) {
+       var now = new Date();
+        var h = now.getHours ()
+        var m = now.getMinutes ()
+
+        for (var i = 0; i < this.monFriTimes.length; i++) {
+            if (this.monFriTimes[i][index] > (h + "." + m)) {
+                return  "<h2 id='next'>" + this.monFriTimes[i][index] + "</h2>";
+            }
+        }
+    }
+
+
+
+
 }
 
 
