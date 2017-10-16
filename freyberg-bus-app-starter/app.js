@@ -1,3 +1,5 @@
+//colors for each buss stop
+
 var colours = ["#f69238",
                 "#009e57",
                 "#00aeef",
@@ -11,24 +13,24 @@ var colours = ["#f69238",
                 "#008b98",
                 "#f0563b"]
 
-var buses = [
-    "awapuni",
-    "rugby",
-    "highbury",
-    "takaro",
-    "cloverlea",
-    "milson",
-    "rhodes",
-    "roslyn",
-    "rangiora",
-    "brightwater",
-    "fernlea",
-    "heights"
-]
+// bus route names
+
+var buses = [ "awapuni",
+              "rugby",
+              "highbury",
+              "takaro",
+              "cloverlea",
+              "milson",
+              "rhodes",
+              "roslyn",
+              "rangiora",
+              "brightwater",
+              "fernlea",
+              "heights"]
 
 //CLASS
 class Bus {
-    //the different properties that Bus objects should have
+//the different properties the Bus objects have
     constructor(name, stops, stopPositions, colour, monFriTimes, friTimes, satTimes, sunTimes) {
         this.name = name;
         this.busStops = stops;
@@ -38,13 +40,14 @@ class Bus {
         this.satTimes = satTimes;
         this.sunTimes = sunTimes;
 
+// enabling the information asked for to be accessed by ID
         this.routeNameDOM = document.getElementById("route")
         this.stopDOM = document.getElementById ("stop")
         this.timesDOM = document.getElementById ("times")
         this.nextDOM = document.getElementById ("next")
     }
 
-
+// Get stops in future for bus
     getStops() {
         var html = '<ul>';
         for (var i = 0; i < this.busStops.length; i++) {
@@ -55,7 +58,7 @@ class Bus {
         html += '</ul>'
         return html
     }
-
+// shows all times bus arrived at certain stop
     showTimes(index) {
         this.routeNameDOM.innerHTML = this.name;
         this.stopDOM.innerHTML = this.busStops[index];
@@ -64,12 +67,14 @@ class Bus {
         this.nextDOM.innerHTML = this.nextAvaliableBus(index)
 
     }
+//google map position once page has loaded
         createMarker(index){
             if (this.marker !=null) {
                 this.marker.setMap(null);
                 this.marker = null;
             }
 
+//moves map to wherever bus stop has been clicked
             var stopPosition = this.stopPositions[index];
             var stopName = this.busStops [index];
             this.marker = new google.maps.Marker({
@@ -78,10 +83,12 @@ class Bus {
                 title: stopName
             });
 
+//position of map and amount of zoom
             map.setCenter (stopPosition);
             map.setZoom(15);
         }
 
+ //get stop times for Monday to Friday times
     getStopTimes(index){
         var contentString = "<ul>";
         for (var i =0; i < this.monFriTimes.length;i++) {
@@ -92,6 +99,7 @@ class Bus {
         return contentString
     }
 
+//gets next time for bus
     getNextTime () {
         var now = new Date ()
         var nextBus = new Date (2017)
@@ -110,29 +118,9 @@ class Bus {
         }
     }
 
-
-
-
 }
 
-
-//OBJECTS
-
-
-/*var awapuni = new Bus("Awapuni", awapuniStops, colours[0], awapuniTimesMonFri, awapuniTimesFri, awapuniTimesSat, awapuniTimesSun);
-var rugby = new Bus("Rugby", rugbyStops, colours[1], rugbyTimesMonFri, rugbyTimesFri, rugbyTimesSat, rugbyTimesSun)
-var highbury = new Bus("Highbury", highburyStops, colours[2], highburyTimesMonFri, highburyTimesFri, highburyTimesSat, highburyTimesSun)
-var takaro = new Bus("Takaro", takaroStops, colours[3], takaroTimesMonFri, takaroTimesFri, takaroTimesSat, takaroTimesSun)
-var cloverlea = new Bus("Cloverlea", cloverleaStops, colours[4], cloverleaTimesMonFri, cloverleaTimesFri, cloverleaTimesSat, cloverleaTimesSun)
-var milson = new Bus("Milson", milsonStops, colours[5], milsonTimesMonFri, milsonTimesFri, milsonTimesSat, milsonTimesSun)
-var rhodes = new Bus("Rhodes", rhodesStops, colours[6], rhodesTimesMonFri, rhodesTimesFri, rhodesTimesSat, rhodesTimesSun)
-var roslyn = new Bus("Roslyn", roslynStops, colours[7], roslynTimesMonFri, roslynTimesFri, roslynTimesSat, roslynTimesSun)
-var rangiora = new Bus("Rangiora", rangioraStops, colours[8], rangioraTimesMonFri, rangioraTimesFri, rangioraTimesSat, rangioraTimesSun)
-var brightwater = new Bus("Brightwater", brightwaterStops, colours[9], brightwaterTimesMonFri, brightwaterTimesFri, brightwaterTimesSat, brightwaterTimesSun)
-var fernlea = new Bus("Fernlea", fernleaStops, colours[10], fernleaTimesMonFri, fernleaTimesFri, fernleaTimesSat, fernleaTimesSun)
-var heights = new Bus("Heights", heightsStops, colours[11], heightsTimesMonFri, heightsTimesFri, heightsTimesSat, heightsTimesSun)
-*/
-
+//routes
 var routes= {};
 
 for (var i = 0; i < buses.length; i++) {
@@ -152,7 +140,7 @@ for (var i = 0; i < buses.length; i++) {
     routes[name]= newRoute
 }
 
-//JQUERY STUFF
+//JQUERY EFFECTS
 $(document).ready(function () {
     var theSquare = {
         lat: -40.353005,
